@@ -1,0 +1,22 @@
+DB CONNECTED
+[0mDELETE /orders/WvBDF4Cn1j [33m404 [0m76.230 ms - 25[0m
+Error: ENOENT: no such file or directory, unlink './upload/1697549058317.png'
+    at Object.unlinkSync (node:fs:1780:3)
+    at exports.deleteOrder (h:\root\home\mircle50-001\www\site1\controller\ordersController.js:156:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: './upload/1697549058317.png'
+}
+[0mDELETE /orders/mYbksCjI4l [31m500 [0m36.794 ms - 31[0m
+Error: ENOENT: no such file or directory, unlink './upload/1697549058317.png'
+    at Object.unlinkSync (node:fs:1780:3)
+    at exports.deleteOrder (h:\root\home\mircle50-001\www\site1\controller\ordersController.js:156:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: './upload/1697549058317.png'
+}
+[0mDELETE /orders/mYbksCjI4l [31m500 [0m26.242 ms - 31[0m

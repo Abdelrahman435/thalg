@@ -1,0 +1,14 @@
+(node:19520) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Application has thrown an uncaught exception and is terminated:
+Error: Packets out of order. Got: 0 Expected: 32
+    at Parser._tryReadPacketHeader (h:\root\home\mircle50-001\www\site1\node_modules\mysql\lib\protocol\Parser.js:470:15)
+    at Parser.write (h:\root\home\mircle50-001\www\site1\node_modules\mysql\lib\protocol\Parser.js:33:29)
+    at Protocol.write (h:\root\home\mircle50-001\www\site1\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (h:\root\home\mircle50-001\www\site1\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (h:\root\home\mircle50-001\www\site1\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:297:9)
+    at Readable.push (node:internal/streams/readable:234:10)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)

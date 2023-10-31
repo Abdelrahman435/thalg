@@ -1,0 +1,7 @@
+DB CONNECTED
+[0mPOST /orders [32m200 [0m581.551 ms - 34[0m
+[0mGET /orders/myOrders [32m200 [0m30.485 ms - 379[0m
+[0mGET /orders/myOrders [36m304 [0m16.986 ms - -[0m
+[0mDELETE /orders/Y9rRJ-OFT8 [32m200 [0m39.122 ms - 26[0m
+[0mGET /orders/myOrders [32m200 [0m15.682 ms - 258[0m
+[0mGET /orders/myOrders [36m304 [0m19.788 ms - -[0m
