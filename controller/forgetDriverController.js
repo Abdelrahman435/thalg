@@ -4,14 +4,12 @@ const {
   deleteOTP,
   verify,
   getOTP,
-} = require("../services/signupCustomerServices");
+} = require("../services/signUpDriversServices");
 const nodemailer = require("nodemailer");
 var passwordValidator = require("password-validator");
 var schema = new passwordValidator();
 const bcrypt = require("bcrypt");
-const {
-  resetPassword,
-} = require("../services/forgetServices");
+const { resetPasswordDriver } = require("../services/forgetServices");
 
 schema
   .is()
@@ -108,7 +106,7 @@ async function changePass(req, res) {
     });
   }
   const newPass = await bcrypt.hashSync(req.body.newPass, 10);
-  const state2 = await resetPassword(newPass, user[0].id);
+  const state2 = await resetPasswordDriver(newPass, user[0].id);
   if (!state2) {
     return res.status(500).json({ msg: "INTERNAL SERVER ERROR" });
   }

@@ -43,7 +43,7 @@ async function signupController(req, res) {
     });
     let otp = Math.floor(1000 + Math.random() * 9000);
     let message = {
-      from: "Thalg",
+      from: "Thalj",
       to: req.body.email,
       subject: "Verify",
       text: `otp is ${otp}`,
@@ -51,7 +51,7 @@ async function signupController(req, res) {
     };
     otp = bcrypt.hashSync(String(otp), 10);
     await transporter.sendMail(message).catch((error) => {
-      // return res.status(500).json({ msg: "INTERNAL SERVER ERROR" });
+      return res.status(500).json({ msg: "INTERNAL SERVER ERROR" });
     });
 
     const d = new Date();
@@ -100,7 +100,7 @@ async function resendOTP(req, res) {
 
   let otp = await Math.floor(1000 + Math.random() * 9000);
   let message = {
-    from: "Thalg",
+    from: "Thalj",
     to: req.body.email,
     subject: "Verify",
     text: `Your OTP is ${otp}`,
@@ -114,7 +114,7 @@ async function resendOTP(req, res) {
   const d = new Date();
   d.setMinutes(d.getMinutes());
   const d2 = new Date();
-  d2.setMinutes(d2.getMinutes() + 20);
+  d2.setMinutes(d2.getMinutes() + 2);
 
   let obj2 = {
     otp: otp,
