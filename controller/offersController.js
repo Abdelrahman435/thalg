@@ -16,9 +16,7 @@ exports.sendOffer = async (req, res) => {
     if (offers == "Sent successfully") {
       return res.status(200).json({ msg: "success" });
     } else {
-      return res
-        .status(409)
-        .json({ msg: "You already sent a offer to this order" });
+      return res.status(200).json({ msg: "Offer Updated" });
     }
   } catch (error) {
     console.log(error);
