@@ -45,7 +45,20 @@ async function loginController(req, res, next) {
     const token = await jwt.sign({ userId: id }, process.env.JWT_SECRET_KEY, {
       expiresIn: process.env.JWT_EXPIRE_TIME,
     });
-    return res.status(200).json({ data: result, token });
+    let daysUntilExpiry;
+    if (result[0].subscription_date == null) {
+      daysUntilExpiry = null;
+    } else {
+      const currentDate = new Date();
+      const subscriptionDate = new Date(result[0].subscription_date);
+      const subscriptionExpiryDate = new Date(subscriptionDate);
+      subscriptionExpiryDate.setMonth(subscriptionExpiryDate.getMonth() + 1);
+      daysUntilExpiry = Math.floor(
+        (subscriptionExpiryDate - currentDate) / (1000 * 60 * 60 * 24)
+      );
+    }
+
+    return res.status(200).json({ data: result, token, daysUntilExpiry });
   } catch (error) {
     return res.status(400).json({
       msg: "The email address or mobile number you entered isn't connected to an account.",

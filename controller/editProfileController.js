@@ -71,6 +71,15 @@ exports.editProfileDriver = async (req, res) => {
         return res.status(400).json({ msg: "email already registered" });
       }
     }
+    if (req.body.password) {
+      const flag = await schema.validate(req.body.password);
+      if (!flag) {
+        return res.status(400).json({
+          msg: "password should contain : 1 lowercase, 1 uppercase, 2 digits, no spaces, length of 8",
+        });
+      }
+      req.body.password = bcrypt.hashSync(req.body.password, 10);
+    }
     result = await userServices.editProfileDriver(req.body, req.user.id);
 
     if (result.length == 0) {
