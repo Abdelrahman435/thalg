@@ -99,15 +99,22 @@ exports.rejected = async (req, res) => {
   try {
     const driver = await getDriver.getDriver(req.params.id);
     if (driver.length > 0) {
-      fs.unlinkSync("./upload/" + driver[0].proofOfIdentityFront);
-      fs.unlinkSync("./upload/" + driver[0].proofOfIdentityBack);
-      fs.unlinkSync("./upload/" + driver[0].drivingLicense);
-      fs.unlinkSync("./upload/" + driver[0].vehicleLicense);
-      fs.unlinkSync("./upload/" + driver[0].operatingCard);
-      fs.unlinkSync("./upload/" + driver[0].transferDocument);
-      if (fs.existsSync("./upload" + driver[0].commercialRegister)) {
-        fs.unlinkSync("./upload/" + driver[0].commercialRegister);
-      }
+      const filesToDelete = [
+        driver[0].proofOfIdentityFront,
+        driver[0].proofOfIdentityBack,
+        driver[0].drivingLicense,
+        driver[0].vehicleLicense,
+        driver[0].operatingCard,
+        driver[0].transferDocument,
+        driver[0].commercialRegister
+      ];
+    
+      filesToDelete.forEach((file) => {
+        const filePath = "../upload/" + file;
+        if (fs.existsSync(filePath)) {
+          fs.unlinkSync(filePath);
+        }
+      });
     }
     const refused = await dashboardServices.refused(req.params.id);
     if (refused) {

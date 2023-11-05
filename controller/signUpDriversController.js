@@ -22,6 +22,9 @@ async function signupController(req, res) {
       phone: req.body.phone,
       email: req.body.email,
       password: await bcrypt.hash(req.body.password, 10),
+      bankName: req.body.bankName,
+      internationalAccountNum: req.body.internationalAccountNum,
+      accountNumber: req.body.accountNumber,
     };
 
     let transporter = nodemailer.createTransport({
