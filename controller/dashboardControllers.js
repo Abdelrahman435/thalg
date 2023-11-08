@@ -62,12 +62,13 @@ exports.acceptInvoice = async (req, res) => {
       req.params.orderId
     );
     if (accept.length > 0) {
-      fs.unlinkSync("../upload/" + accept[0].file);
+      fs.unlinkSync("./upload/" + accept[0].file);
       res.status(200).json({ msg: "Invoice accepted" });
     } else {
       res.status(403).json({ msg: "Invoice not accepted" });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ errors: ["Internal server error"] });
   }
 };
@@ -106,9 +107,9 @@ exports.rejected = async (req, res) => {
         driver[0].vehicleLicense,
         driver[0].operatingCard,
         driver[0].transferDocument,
-        driver[0].commercialRegister
+        driver[0].commercialRegister,
       ];
-    
+
       filesToDelete.forEach((file) => {
         const filePath = "../upload/" + file;
         if (fs.existsSync(filePath)) {
