@@ -164,7 +164,7 @@ exports.getDriverOrders = async (id) => {
   try {
     const query = util.promisify(connection.query).bind(connection);
     const orders = await query(
-      "select * from orders where driverId = ? and status = 'Pending'",
+      "select * from orders where driverId = ? and status = 'Invoice Sent'",
       [id]
     );
     return orders;
